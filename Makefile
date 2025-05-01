@@ -1,4 +1,4 @@
-VENV = venv
+VENV = .venv
 ACTIVATE = $(VENV)/bin/activate
 PYTHON = $(VENV)/bin/python
 
@@ -7,12 +7,10 @@ install:
 	. $(ACTIVATE) && pip install -r requirements.txt
 
 run:
-	. $(ACTIVATE) && ./app/python3 main.py
+	. $(ACTIVATE) && pip freeze > requirements.txt
+	. $(ACTIVATE) && python3 app/main.py
 
 clean:
 	rm -rf $(VENV)
 	rm -rf __pycache__
 	rm -rf *.pyc
-
-print:
-	echo "teste"
